@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from  .models import Post
 
-def index(request):
+def post_list(request):
     posts = Post.published.all()
-    return render(request, "blog/index.html",
+    return render(request, "blog/post/list.html",
                   {'posts':posts})
 
 
@@ -14,9 +14,3 @@ def post_detail(request, id):
                              status=Post.Status.PUBLISHED)
     return render(request, "blog/post/detail.html",
                  {'post':post})
-
-
-
-def contact(request):
-    return render(request, "blog/contact.html")
-
